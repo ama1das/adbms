@@ -1,0 +1,1186 @@
+
+mysql: [Warning] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe: ignoring option '--no-beep' due to invalid value ''.
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 13
+Server version: 8.0.19 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database amal
+    -> create database amal(id int,varchar name(100));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'create database amal(id int,varchar name(100))' at line 2
+mysql> create database amal;
+Query OK, 1 row affected (0.04 sec)
+
+mysql> create database amal(id int,varchar name(100));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(id int,varchar name(100))' at line 1
+mysql> create database amal(id int,varchar name(100));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(id int,varchar name(100))' at line 1
+mysql> create database amal;
+ERROR 1007 (HY000): Can't create database 'amal'; database exists
+mysql> create database amal(id int,name varchar(100));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(id int,name varchar(100))' at line 1
+mysql> use amal;
+Database changed
+mysql> create table pqr;
+ERROR 1113 (42000): A table must have at least 1 column
+mysql> create table pqr(id int,name varchar(100));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into pqr;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> insert into table pqr;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table pqr' at line 1
+mysql> insert into table pqr values(1,akshay);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table pqr values(1,akshay)' at line 1
+mysql> insert into pqr values(1,akshay);
+ERROR 1054 (42S22): Unknown column 'akshay' in 'field list'
+mysql> insert into pqr values(1,'akshay');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into pqr values(2,'akash');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into pqr values(3,'arun');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into pqr values(4,'salah');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into pqr values(5,'anagha');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into pqr values(6,'shahana');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into pqr values(7,'sherin');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into pqr values(8,'vishnu');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into pqr values(9,'rahul');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into pqr values(10,'athul');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select* from pqr;
++------+---------+
+| id   | name    |
++------+---------+
+|    1 | akshay  |
+|    2 | akash   |
+|    3 | arun    |
+|    4 | salah   |
+|    5 | anagha  |
+|    6 | shahana |
+|    7 | sherin  |
+|    8 | vishnu  |
+|    9 | rahul   |
+|   10 | athul   |
++------+---------+
+10 rows in set (0.00 sec)
+
+mysql> alter table pqr add column age(int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(int)' at line 1
+mysql> alter table pqr add column age int;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select* from pqr;
++------+---------+------+
+| id   | name    | age  |
++------+---------+------+
+|    1 | akshay  | NULL |
+|    2 | akash   | NULL |
+|    3 | arun    | NULL |
+|    4 | salah   | NULL |
+|    5 | anagha  | NULL |
+|    6 | shahana | NULL |
+|    7 | sherin  | NULL |
+|    8 | vishnu  | NULL |
+|    9 | rahul   | NULL |
+|   10 | athul   | NULL |
++------+---------+------+
+10 rows in set (0.00 sec)
+
+mysql> update pqr set age='21' where id='1';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update pqr set age='22' where id='2';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update pqr set age='22' where id='3';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update pqr set age='20' where id='4';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update pqr set age='24' where id='5';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update pqr set age='24' where id='6';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update pqr set age='24' where id='7';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update pqr set age='26' where id='8';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update pqr set age='28' where id='9';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update pqr set age='19' where id='10';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select* from pqr;
++------+---------+------+
+| id   | name    | age  |
++------+---------+------+
+|    1 | akshay  |   21 |
+|    2 | akash   |   22 |
+|    3 | arun    |   22 |
+|    4 | salah   |   20 |
+|    5 | anagha  |   24 |
+|    6 | shahana |   24 |
+|    7 | sherin  |   24 |
+|    8 | vishnu  |   26 |
+|    9 | rahul   |   28 |
+|   10 | athul   |   19 |
++------+---------+------+
+10 rows in set (0.00 sec)
+
+mysql> alter table pqr add column department varchar(100);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select* from pqr;
++------+---------+------+------------+
+| id   | name    | age  | department |
++------+---------+------+------------+
+|    1 | akshay  |   21 | NULL       |
+|    2 | akash   |   22 | NULL       |
+|    3 | arun    |   22 | NULL       |
+|    4 | salah   |   20 | NULL       |
+|    5 | anagha  |   24 | NULL       |
+|    6 | shahana |   24 | NULL       |
+|    7 | sherin  |   24 | NULL       |
+|    8 | vishnu  |   26 | NULL       |
+|    9 | rahul   |   28 | NULL       |
+|   10 | athul   |   19 | NULL       |
++------+---------+------+------------+
+10 rows in set (0.00 sec)
+
+mysql> update pqr set department='mac' where id='10';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select* from pqr;
++------+---------+------+------------+
+| id   | name    | age  | department |
++------+---------+------+------------+
+|    1 | akshay  |   21 | NULL       |
+|    2 | akash   |   22 | NULL       |
+|    3 | arun    |   22 | NULL       |
+|    4 | salah   |   20 | NULL       |
+|    5 | anagha  |   24 | NULL       |
+|    6 | shahana |   24 | NULL       |
+|    7 | sherin  |   24 | NULL       |
+|    8 | vishnu  |   26 | NULL       |
+|    9 | rahul   |   28 | NULL       |
+|   10 | athul   |   19 | mac        |
++------+---------+------+------------+
+10 rows in set (0.00 sec)
+
+mysql> update pqr set department='mca' where id='10';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select* from pqr;
++------+---------+------+------------+
+| id   | name    | age  | department |
++------+---------+------+------------+
+|    1 | akshay  |   21 | NULL       |
+|    2 | akash   |   22 | NULL       |
+|    3 | arun    |   22 | NULL       |
+|    4 | salah   |   20 | NULL       |
+|    5 | anagha  |   24 | NULL       |
+|    6 | shahana |   24 | NULL       |
+|    7 | sherin  |   24 | NULL       |
+|    8 | vishnu  |   26 | NULL       |
+|    9 | rahul   |   28 | NULL       |
+|   10 | athul   |   19 | mca        |
++------+---------+------+------------+
+10 rows in set (0.00 sec)
+
+mysql> update pqr set department='mca' where id='9';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update pqr set department='cse' where id='8';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update pqr set department='cse' where id='7';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update pqr set department='cse' where id='6';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update pqr set department='eee' where id='5';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update pqr set department='civil' where id='4';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update pqr set department='civil' where id='3';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update pqr set department='civil' where id='2';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update pqr set department='mech' where id='1';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select* from pqr;
++------+---------+------+------------+
+| id   | name    | age  | department |
++------+---------+------+------------+
+|    1 | akshay  |   21 | mech       |
+|    2 | akash   |   22 | civil      |
+|    3 | arun    |   22 | civil      |
+|    4 | salah   |   20 | civil      |
+|    5 | anagha  |   24 | eee        |
+|    6 | shahana |   24 | cse        |
+|    7 | sherin  |   24 | cse        |
+|    8 | vishnu  |   26 | cse        |
+|    9 | rahul   |   28 | mca        |
+|   10 | athul   |   19 | mca        |
++------+---------+------+------------+
+10 rows in set (0.00 sec)
+
+mysql> select* from pqr;
++------+---------+------+------------+
+| id   | name    | age  | department |
++------+---------+------+------------+
+|    1 | akshay  |   21 | mech       |
+|    2 | akash   |   22 | civil      |
+|    3 | arun    |   22 | civil      |
+|    4 | salah   |   20 | civil      |
+|    5 | anagha  |   24 | eee        |
+|    6 | shahana |   24 | cse        |
+|    7 | sherin  |   24 | cse        |
+|    8 | vishnu  |   26 | cse        |
+|    9 | rahul   |   28 | mca        |
+|   10 | athul   |   19 | mca        |
++------+---------+------+------------+
+10 rows in set (0.00 sec)
+
+mysql> update pqr set age='55' department='history' where id='2';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'department='history' where id='2'' at line 1
+mysql> select* from pqr;
++------+---------+------+------------+
+| id   | name    | age  | department |
++------+---------+------+------------+
+|    1 | akshay  |   21 | mech       |
+|    2 | akash   |   22 | civil      |
+|    3 | arun    |   22 | civil      |
+|    4 | salah   |   20 | civil      |
+|    5 | anagha  |   24 | eee        |
+|    6 | shahana |   24 | cse        |
+|    7 | sherin  |   24 | cse        |
+|    8 | vishnu  |   26 | cse        |
+|    9 | rahul   |   28 | mca        |
+|   10 | athul   |   19 | mca        |
++------+---------+------+------------+
+10 rows in set (0.00 sec)
+
+mysql> update pqr set age='55',department='history' where id='2';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select* from pqr;
++------+---------+------+------------+
+| id   | name    | age  | department |
++------+---------+------+------------+
+|    1 | akshay  |   21 | mech       |
+|    2 | akash   |   55 | history    |
+|    3 | arun    |   22 | civil      |
+|    4 | salah   |   20 | civil      |
+|    5 | anagha  |   24 | eee        |
+|    6 | shahana |   24 | cse        |
+|    7 | sherin  |   24 | cse        |
+|    8 | vishnu  |   26 | cse        |
+|    9 | rahul   |   28 | mca        |
+|   10 | athul   |   19 | mca        |
++------+---------+------+------------+
+10 rows in set (0.00 sec)
+
+mysql> update pqr set name='suni',age='55' department='history' where id='2';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'department='history' where id='2'' at line 1
+mysql> update pqr set name='suni',age='55' department='history' where id='2';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'department='history' where id='2'' at line 1
+mysql> select* from pqr;
++------+---------+------+------------+
+| id   | name    | age  | department |
++------+---------+------+------------+
+|    1 | akshay  |   21 | mech       |
+|    2 | akash   |   55 | history    |
+|    3 | arun    |   22 | civil      |
+|    4 | salah   |   20 | civil      |
+|    5 | anagha  |   24 | eee        |
+|    6 | shahana |   24 | cse        |
+|    7 | sherin  |   24 | cse        |
+|    8 | vishnu  |   26 | cse        |
+|    9 | rahul   |   28 | mca        |
+|   10 | athul   |   19 | mca        |
++------+---------+------+------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from pqr where id='10';
++------+-------+------+------------+
+| id   | name  | age  | department |
++------+-------+------+------------+
+|   10 | athul |   19 | mca        |
++------+-------+------+------------+
+1 row in set (0.00 sec)
+
+mysql> select* from pqr;
++------+---------+------+------------+
+| id   | name    | age  | department |
++------+---------+------+------------+
+|    1 | akshay  |   21 | mech       |
+|    2 | akash   |   55 | history    |
+|    3 | arun    |   22 | civil      |
+|    4 | salah   |   20 | civil      |
+|    5 | anagha  |   24 | eee        |
+|    6 | shahana |   24 | cse        |
+|    7 | sherin  |   24 | cse        |
+|    8 | vishnu  |   26 | cse        |
+|    9 | rahul   |   28 | mca        |
+|   10 | athul   |   19 | mca        |
++------+---------+------+------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from pqr where id='1';
++------+--------+------+------------+
+| id   | name   | age  | department |
++------+--------+------+------------+
+|    1 | akshay |   21 | mech       |
++------+--------+------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * from pqr where id='3';
++------+------+------+------------+
+| id   | name | age  | department |
++------+------+------+------------+
+|    3 | arun |   22 | civil      |
++------+------+------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * from pqr where id='7';
++------+--------+------+------------+
+| id   | name   | age  | department |
++------+--------+------+------------+
+|    7 | sherin |   24 | cse        |
++------+--------+------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * from pqr where id>'5';
++------+---------+------+------------+
+| id   | name    | age  | department |
++------+---------+------+------------+
+|    6 | shahana |   24 | cse        |
+|    7 | sherin  |   24 | cse        |
+|    8 | vishnu  |   26 | cse        |
+|    9 | rahul   |   28 | mca        |
+|   10 | athul   |   19 | mca        |
++------+---------+------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from pqr where id>='5';
++------+---------+------+------------+
+| id   | name    | age  | department |
++------+---------+------+------------+
+|    5 | anagha  |   24 | eee        |
+|    6 | shahana |   24 | cse        |
+|    7 | sherin  |   24 | cse        |
+|    8 | vishnu  |   26 | cse        |
+|    9 | rahul   |   28 | mca        |
+|   10 | athul   |   19 | mca        |
++------+---------+------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from pqr where id<='5';
++------+--------+------+------------+
+| id   | name   | age  | department |
++------+--------+------+------------+
+|    1 | akshay |   21 | mech       |
+|    2 | akash  |   55 | history    |
+|    3 | arun   |   22 | civil      |
+|    4 | salah  |   20 | civil      |
+|    5 | anagha |   24 | eee        |
++------+--------+------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from pqr where id<'5';
++------+--------+------+------------+
+| id   | name   | age  | department |
++------+--------+------+------------+
+|    1 | akshay |   21 | mech       |
+|    2 | akash  |   55 | history    |
+|    3 | arun   |   22 | civil      |
+|    4 | salah  |   20 | civil      |
++------+--------+------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from pqr where '7'<id<'10';
++------+---------+------+------------+
+| id   | name    | age  | department |
++------+---------+------+------------+
+|    1 | akshay  |   21 | mech       |
+|    2 | akash   |   55 | history    |
+|    3 | arun    |   22 | civil      |
+|    4 | salah   |   20 | civil      |
+|    5 | anagha  |   24 | eee        |
+|    6 | shahana |   24 | cse        |
+|    7 | sherin  |   24 | cse        |
+|    8 | vishnu  |   26 | cse        |
+|    9 | rahul   |   28 | mca        |
+|   10 | athul   |   19 | mca        |
++------+---------+------+------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from pqr where id<'7';
++------+---------+------+------------+
+| id   | name    | age  | department |
++------+---------+------+------------+
+|    1 | akshay  |   21 | mech       |
+|    2 | akash   |   55 | history    |
+|    3 | arun    |   22 | civil      |
+|    4 | salah   |   20 | civil      |
+|    5 | anagha  |   24 | eee        |
+|    6 | shahana |   24 | cse        |
++------+---------+------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from pqr where id>'7';
++------+--------+------+------------+
+| id   | name   | age  | department |
++------+--------+------+------------+
+|    8 | vishnu |   26 | cse        |
+|    9 | rahul  |   28 | mca        |
+|   10 | athul  |   19 | mca        |
++------+--------+------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from pqr where '10'<id>'7';
+Empty set (0.00 sec)
+
+mysql>
+mysql> select * from pqr where '10'<id>'7';
+Empty set (0.00 sec)
+
+mysql> select * from pqr where id>'7'id<'10';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'id<'10'' at line 1
+mysql> select * from pqr where id>'7' id<'10';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'id<'10'' at line 1
+mysql> select * from pqr where id>'7' and id<'10';
++------+--------+------+------------+
+| id   | name   | age  | department |
++------+--------+------+------------+
+|    8 | vishnu |   26 | cse        |
+|    9 | rahul  |   28 | mca        |
++------+--------+------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select name from pqr where name lie'%';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'lie'%'' at line 1
+mysql> select name from pqr where name lie'n%';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'lie'n%'' at line 1
+mysql> select name from pqr where name like'n%';
+Empty set (0.00 sec)
+
+mysql> select name from pqr where name like'a%';
++--------+
+| name   |
++--------+
+| akshay |
+| akash  |
+| arun   |
+| anagha |
+| athul  |
++--------+
+5 rows in set (0.00 sec)
+
+mysql> select name from pqr where name like'v%';
++--------+
+| name   |
++--------+
+| vishnu |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select name from pqr where name like'_k%';
++--------+
+| name   |
++--------+
+| akshay |
+| akash  |
++--------+
+2 rows in set (0.00 sec)
+
+mysql> select name from pqr where name like'%k%';
++--------+
+| name   |
++--------+
+| akshay |
+| akash  |
++--------+
+2 rows in set (0.00 sec)
+
+mysql> select name from pqr where name like'%a%';
++---------+
+| name    |
++---------+
+| akshay  |
+| akash   |
+| arun    |
+| salah   |
+| anagha  |
+| shahana |
+| rahul   |
+| athul   |
++---------+
+8 rows in set (0.00 sec)
+
+mysql> mysql: [Warning] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe: ignoring option '--no-beep' due to invalid value ''.
+ERROR:
+Unknown command '\P'.
+ERROR:
+Unknown command '\M'.
+ERROR:
+Unknown command '\M'.
+ERROR:
+Unknown command '\b'.
+ERROR:
+Unknown command '\m'.
+    -> Enter password: ****
+    -> Welcome to the MySQL monitor.  Commands end with ; or \g.
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'mysql: [Warning] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe: ignoring' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'or' at line 1
+    -> Your MySQL connection id is 13
+    -> Server version: 8.0.19 MySQL Community Server - GPL
+    ->
+    -> Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+    ->
+    -> Oracle is a registered trademark of Oracle Corporation and/or its
+    -> affiliates. Other names may be trademarks of their respective
+    -> owners.
+    ->
+    -> Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+    ->
+    -> mysql> create database amal
+    ->     -> create database amal(id int,varchar name(100));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.
+Your MySQL connection id is 13
+Server version: 8.0.19 MySQL Community Server -' at line 1
+mysql> ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'create database amal(id int,varchar name(100))' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ERROR 1064 (42000): You have an error in your SQL syntax' at line 1
+    -> mysql> create database amal;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'the manual that corresponds to your MySQL server version for the right syntax to' at line 1
+mysql> Query OK, 1 row affected (0.04 sec)
+    ->
+    -> mysql> create database amal(id int,varchar name(100));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 1 row affected (0.04 sec)
+
+mysql> create database amal(id int,varchar ' at line 1
+mysql> ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(id int,varchar name(100))' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ERROR 1064 (42000): You have an error in your SQL syntax' at line 1
+    -> mysql> create database amal(id int,varchar name(100));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'the manual that corresponds to your MySQL server version for the right syntax to' at line 1
+mysql> ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(id int,varchar name(100))' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ERROR 1064 (42000): You have an error in your SQL syntax' at line 1
+    -> mysql> create database amal;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'the manual that corresponds to your MySQL server version for the right syntax to' at line 1
+mysql> ERROR 1007 (HY000): Can't create database 'amal'; database exists
+    '> mysql> create database amal(id int,name varchar(100));
+    '> ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(id int,name varchar(100))' at line 1
+    '> mysql> use amal;
+    '> Database changed
+    '> mysql> create table pqr;
+    '> ERROR 1113 (42000): A table must have at least 1 column
+    '> mysql> create table pqr(id int,name varchar(100));
+    '> Query OK, 0 rows affected (0.03 sec)
+    '>
+    '> mysql> insert into pqr;
+    '> ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+    '> mysql> insert into table pqr;
+    '> ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table pqr' at line 1
+    '> mysql> insert into table pqr values(1,akshay);
+    '> ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table pqr values(1,akshay)' at line 1
+    '> mysql> insert into pqr values(1,akshay);
+    '> ERROR 1054 (42S22): Unknown column 'akshay' in 'field list'
+    '> mysql> insert into pqr values(1,'akshay');
+    '> Query OK, 1 row affected (0.01 sec)
+    '>
+    '> mysql> insert into pqr values(2,'akash');
+    '> Query OK, 1 row affected (0.00 sec)
+    '>
+    '> mysql> insert into pqr values(3,'arun');
+    '> Query OK, 1 row affected (0.00 sec)
+    '>
+    '> mysql> insert into pqr values(4,'salah');
+    '> Query OK, 1 row affected (0.01 sec)
+    '>
+    '> mysql> insert into pqr values(5,'anagha');
+    '> Query OK, 1 row affected (0.00 sec)
+    '>
+    '> mysql> insert into pqr values(6,'shahana');
+    '> Query OK, 1 row affected (0.00 sec)
+    '>
+    '> mysql> insert into pqr values(7,'sherin');
+    '> Query OK, 1 row affected (0.00 sec)
+    '>
+    '> mysql> insert into pqr values(8,'vishnu');
+    '> Query OK, 1 row affected (0.00 sec)
+    '>
+    '> mysql> insert into pqr values(9,'rahul');
+    '> Query OK, 1 row affected (0.00 sec)
+    '>
+    '> mysql> insert into pqr values(10,'athul');
+    '> Query OK, 1 row affected (0.00 sec)
+    '>
+    '> mysql> select* from pqr;
+    '> +------+---------+
+    '> | id   | name    |
+    '> +------+---------+
+    '> |    1 | akshay  |
+    '> |    2 | akash   |
+    '> |    3 | arun    |
+    '> |    4 | salah   |
+    '> |    5 | anagha  |
+    '> |    6 | shahana |
+    '> |    7 | sherin  |
+    '> |    8 | vishnu  |
+    '> |    9 | rahul   |
+    '> |   10 | athul   |
+    '> +------+---------+
+    '> 10 rows in set (0.00 sec)
+    '>
+    '> mysql> alter table pqr add column age(int);
+    '> ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(int)' at line 1
+    '> mysql> alter table pqr add column age int;
+    '> Query OK, 0 rows affected (0.01 sec)
+    '> Records: 0  Duplicates: 0  Warnings: 0
+    '>
+    '> mysql> select* from pqr;
+    '> +------+---------+------+
+    '> | id   | name    | age  |
+    '> +------+---------+------+
+    '> |    1 | akshay  | NULL |
+    '> |    2 | akash   | NULL |
+    '> |    3 | arun    | NULL |
+    '> |    4 | salah   | NULL |
+    '> |    5 | anagha  | NULL |
+    '> |    6 | shahana | NULL |
+    '> |    7 | sherin  | NULL |
+    '> |    8 | vishnu  | NULL |
+    '> |    9 | rahul   | NULL |
+    '> |   10 | athul   | NULL |
+    '> +------+---------+------+
+    '> 10 rows in set (0.00 sec)
+    '>
+    '> mysql> update pqr set age='21' where id='1';
+    '> Query OK, 1 row affected (0.01 sec)
+    '> Rows matched: 1  Changed: 1  Warnings: 0
+    '>
+    '> mysql> update pqr set age='22' where id='2';
+    '> Query OK, 1 row affected (0.00 sec)
+    '> Rows matched: 1  Changed: 1  Warnings: 0
+    '>
+    '> mysql> update pqr set age='22' where id='3';
+    '> Query OK, 1 row affected (0.00 sec)
+    '> Rows matched: 1  Changed: 1  Warnings: 0
+    '>
+    '> mysql> update pqr set age='20' where id='4';
+    '> Query OK, 1 row affected (0.00 sec)
+    '> Rows matched: 1  Changed: 1  Warnings: 0
+    '>
+    '> mysql> update pqr set age='24' where id='5';
+    '> Query OK, 1 row affected (0.00 sec)
+    '> Rows matched: 1  Changed: 1  Warnings: 0
+    '>
+    '> mysql> update pqr set age='24' where id='6';
+    '> Query OK, 1 row affected (0.01 sec)
+    '> Rows matched: 1  Changed: 1  Warnings: 0
+    '>
+    '> mysql> update pqr set age='24' where id='7';
+    '> Query OK, 1 row affected (0.00 sec)
+    '> Rows matched: 1  Changed: 1  Warnings: 0
+    '>
+    '> mysql> update pqr set age='26' where id='8';
+    '> Query OK, 1 row affected (0.00 sec)
+    '> Rows matched: 1  Changed: 1  Warnings: 0
+    '>
+    '> mysql> update pqr set age='28' where id='9';
+    '> Query OK, 1 row affected (0.00 sec)
+    '> Rows matched: 1  Changed: 1  Warnings: 0
+    '>
+    '> mysql> update pqr set age='19' where id='10';
+    '> Query OK, 1 row affected (0.00 sec)
+    '> Rows matched: 1  Changed: 1  Warnings: 0
+    '>
+    '> mysql> select* from pqr;
+    '> +------+---------+------+
+    '> | id   | name    | age  |
+    '> +------+---------+------+
+    '> |    1 | akshay  |   21 |
+    '> |    2 | akash   |   22 |
+    '> |    3 | arun    |   22 |
+    '> |    4 | salah   |   20 |
+    '> |    5 | anagha  |   24 |
+    '> |    6 | shahana |   24 |
+    '> |    7 | sherin  |   24 |
+    '> |    8 | vishnu  |   26 |
+    '> |    9 | rahul   |   28 |
+    '> |   10 | athul   |   19 |
+    '> +------+---------+------+
+    '> 10 rows in set (0.00 sec)
+    '>
+    '> mysql> alter table pqr add column department varchar(100);
+    '> Query OK, 0 rows affected (0.03 sec)
+    '> Records: 0  Duplicates: 0  Warnings: 0
+    '>
+    '> mysql> select* from pqr;
+    '> +------+---------+------+------------+
+    '> | id   | name    | age  | department |
+    '> +------+---------+------+------------+
+    '> |    1 | akshay  |   21 | NULL       |
+    '> |    2 | akash   |   22 | NULL       |
+    '> |    3 | arun    |   22 | NULL       |
+    '> |    4 | salah   |   20 | NULL       |
+    '> |    5 | anagha  |   24 | NULL       |
+    '> |    6 | shahana |   24 | NULL       |
+    '> |    7 | sherin  |   24 | NULL       |
+    '> |    8 | vishnu  |   26 | NULL       |
+    '> |    9 | rahul   |   28 | NULL       |
+    '> |   10 | athul   |   19 | NULL       |
+    '> +------+---------+------+------------+
+    '> 10 rows in set (0.00 sec)
+    '>
+    '> mysql> update pqr set department='mac' where id='10';
+    '> Query OK, 1 row affected (0.00 sec)
+    '> Rows matched: 1  Changed: 1  Warnings: 0
+    '>
+    '> mysql> select* from pqr;
+    '> +------+---------+------+------------+
+    '> | id   | name    | age  | department |
+    '> +------+---------+------+------------+
+    '> |    1 | akshay  |   21 | NULL       |
+    '> |    2 | akash   |   22 | NULL       |
+    '> |    3 | arun    |   22 | NULL       |
+    '> |    4 | salah   |   20 | NULL       |
+    '> |    5 | anagha  |   24 | NULL       |
+    '> |    6 | shahana |   24 | NULL       |
+    '> |    7 | sherin  |   24 | NULL       |
+    '> |    8 | vishnu  |   26 | NULL       |
+    '> |    9 | rahul   |   28 | NULL       |
+    '> |   10 | athul   |   19 | mac        |
+    '> +------+---------+------+------------+
+    '> 10 rows in set (0.00 sec)
+    '>
+    '> mysql> update pqr set department='mca' where id='10';
+    '> Query OK, 1 row affected (0.00 sec)
+    '> Rows matched: 1  Changed: 1  Warnings: 0
+    '>
+    '> mysql> select* from pqr;
+    '> +------+---------+------+------------+
+    '> | id   | name    | age  | department |
+    '> +------+---------+------+------------+
+    '> |    1 | akshay  |   21 | NULL       |
+    '> |    2 | akash   |   22 | NULL       |
+    '> |    3 | arun    |   22 | NULL       |
+    '> |    4 | salah   |   20 | NULL       |
+    '> |    5 | anagha  |   24 | NULL       |
+    '> |    6 | shahana |   24 | NULL       |
+    '> |    7 | sherin  |   24 | NULL       |
+    '> |    8 | vishnu  |   26 | NULL       |
+    '> |    9 | rahul   |   28 | NULL       |
+    '> |   10 | athul   |   19 | mca        |
+    '> +------+---------+------+------------+
+    '> 10 rows in set (0.00 sec)
+    '>
+    '> mysql> update pqr set department='mca' where id='9';
+    '> Query OK, 1 row affected (0.00 sec)
+    '> Rows matched: 1  Changed: 1  Warnings: 0
+    '>
+    '> mysql> update pqr set department='cse' where id='8';
+    '> Query OK, 1 row affected (0.00 sec)
+    '> Rows matched: 1  Changed: 1  Warnings: 0
+    '>
+    '> mysql> update pqr set department='cse' where id='7';
+    '> Query OK, 1 row affected (0.01 sec)
+    '> Rows matched: 1  Changed: 1  Warnings: 0
+    '>
+    '> mysql> update pqr set department='cse' where id='6';
+    '> Query OK, 1 row affected (0.00 sec)
+    '> Rows matched: 1  Changed: 1  Warnings: 0
+    '>
+    '> mysql> update pqr set department='eee' where id='5';
+    '> Query OK, 1 row affected (0.00 sec)
+    '> Rows matched: 1  Changed: 1  Warnings: 0
+    '>
+    '> mysql> update pqr set department='civil' where id='4';
+    '> Query OK, 1 row affected (0.00 sec)
+    '> Rows matched: 1  Changed: 1  Warnings: 0
+    '>
+    '> mysql> update pqr set department='civil' where id='3';
+    '> Query OK, 1 row affected (0.00 sec)
+    '> Rows matched: 1  Changed: 1  Warnings: 0
+    '>
+    '> mysql> update pqr set department='civil' where id='2';
+    '> Query OK, 1 row affected (0.00 sec)
+    '> Rows matched: 1  Changed: 1  Warnings: 0
+    '>
+    '> mysql> update pqr set department='mech' where id='1';
+    '> Query OK, 1 row affected (0.00 sec)
+    '> Rows matched: 1  Changed: 1  Warnings: 0
+    '>
+    '> mysql> select* from pqr;
+    '> +------+---------+------+------------+
+    '> | id   | name    | age  | department |
+    '> +------+---------+------+------------+
+    '> |    1 | akshay  |   21 | mech       |
+    '> |    2 | akash   |   22 | civil      |
+    '> |    3 | arun    |   22 | civil      |
+    '> |    4 | salah   |   20 | civil      |
+    '> |    5 | anagha  |   24 | eee        |
+    '> |    6 | shahana |   24 | cse        |
+    '> |    7 | sherin  |   24 | cse        |
+    '> |    8 | vishnu  |   26 | cse        |
+    '> |    9 | rahul   |   28 | mca        |
+    '> |   10 | athul   |   19 | mca        |
+    '> +------+---------+------+------------+
+    '> 10 rows in set (0.00 sec)
+    '>
+    '> mysql> select* from pqr;
+    '> +------+---------+------+------------+
+    '> | id   | name    | age  | department |
+    '> +------+---------+------+------------+
+    '> |    1 | akshay  |   21 | mech       |
+    '> |    2 | akash   |   22 | civil      |
+    '> |    3 | arun    |   22 | civil      |
+    '> |    4 | salah   |   20 | civil      |
+    '> |    5 | anagha  |   24 | eee        |
+    '> |    6 | shahana |   24 | cse        |
+    '> |    7 | sherin  |   24 | cse        |
+    '> |    8 | vishnu  |   26 | cse        |
+    '> |    9 | rahul   |   28 | mca        |
+    '> |   10 | athul   |   19 | mca        |
+    '> +------+---------+------+------------+
+    '> 10 rows in set (0.00 sec)
+    '>
+    '> mysql> update pqr set age='55' department='history' where id='2';
+    '> ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'department='history' where id='2'' at line 1
+    '> mysql> select* from pqr;
+    '> +------+---------+------+------------+
+    '> | id   | name    | age  | department |
+    '> +------+---------+------+------------+
+    '> |    1 | akshay  |   21 | mech       |
+    '> |    2 | akash   |   22 | civil      |
+    '> |    3 | arun    |   22 | civil      |
+    '> |    4 | salah   |   20 | civil      |
+    '> |    5 | anagha  |   24 | eee        |
+    '> |    6 | shahana |   24 | cse        |
+    '> |    7 | sherin  |   24 | cse        |
+    '> |    8 | vishnu  |   26 | cse        |
+    '> |    9 | rahul   |   28 | mca        |
+    '> |   10 | athul   |   19 | mca        |
+    '> +------+---------+------+------------+
+    '> 10 rows in set (0.00 sec)
+    '>
+    '> mysql> update pqr set age='55',department='history' where id='2';
+    '> Query OK, 1 row affected (0.01 sec)
+    '> Rows matched: 1  Changed: 1  Warnings: 0
+    '>
+    '> mysql> select* from pqr;
+    '> +------+---------+------+------------+
+    '> | id   | name    | age  | department |
+    '> +------+---------+------+------------+
+    '> |    1 | akshay  |   21 | mech       |
+    '> |    2 | akash   |   55 | history    |
+    '> |    3 | arun    |   22 | civil      |
+    '> |    4 | salah   |   20 | civil      |
+    '> |    5 | anagha  |   24 | eee        |
+    '> |    6 | shahana |   24 | cse        |
+    '> |    7 | sherin  |   24 | cse        |
+    '> |    8 | vishnu  |   26 | cse        |
+    '> |    9 | rahul   |   28 | mca        |
+    '> |   10 | athul   |   19 | mca        |
+    '> +------+---------+------+------------+
+    '> 10 rows in set (0.00 sec)
+    '>
+    '> mysql> update pqr set name='suni',age='55' department='history' where id='2';
+    '> ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'department='history' where id='2'' at line 1
+    '> mysql> update pqr set name='suni',age='55' department='history' where id='2';
+    '> ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'department='history' where id='2'' at line 1
+    '> mysql> select* from pqr;
+    '> +------+---------+------+------------+
+    '> | id   | name    | age  | department |
+    '> +------+---------+------+------------+
+    '> |    1 | akshay  |   21 | mech       |
+    '> |    2 | akash   |   55 | history    |
+    '> |    3 | arun    |   22 | civil      |
+    '> |    4 | salah   |   20 | civil      |
+    '> |    5 | anagha  |   24 | eee        |
+    '> |    6 | shahana |   24 | cse        |
+    '> |    7 | sherin  |   24 | cse        |
+    '> |    8 | vishnu  |   26 | cse        |
+    '> |    9 | rahul   |   28 | mca        |
+    '> |   10 | athul   |   19 | mca        |
+    '> +------+---------+------+------------+
+    '> 10 rows in set (0.00 sec)
+    '>
+    '> mysql> select * from pqr where id='10';
+    '> +------+-------+------+------------+
+    '> | id   | name  | age  | department |
+    '> +------+-------+------+------------+
+    '> |   10 | athul |   19 | mca        |
+    '> +------+-------+------+------------+
+    '> 1 row in set (0.00 sec)
+    '>
+    '> mysql> select* from pqr;
+    '> +------+---------+------+------------+
+    '> | id   | name    | age  | department |
+    '> +------+---------+------+------------+
+    '> |    1 | akshay  |   21 | mech       |
+    '> |    2 | akash   |   55 | history    |
+    '> |    3 | arun    |   22 | civil      |
+    '> |    4 | salah   |   20 | civil      |
+    '> |    5 | anagha  |   24 | eee        |
+    '> |    6 | shahana |   24 | cse        |
+    '> |    7 | sherin  |   24 | cse        |
+    '> |    8 | vishnu  |   26 | cse        |
+    '> |    9 | rahul   |   28 | mca        |
+    '> |   10 | athul   |   19 | mca        |
+    '> +------+---------+------+------------+
+    '> 10 rows in set (0.00 sec)
+    '>
+    '> mysql> select * from pqr where id='1';
+    '> +------+--------+------+------------+
+    '> | id   | name   | age  | department |
+    '> +------+--------+------+------------+
+    '> |    1 | akshay |   21 | mech       |
+    '> +------+--------+------+------------+
+    '> 1 row in set (0.00 sec)
+    '>
+    '> mysql> select * from pqr where id='3';
+    '> +------+------+------+------------+
+    '> | id   | name | age  | department |
+    '> +------+------+------+------------+
+    '> |    3 | arun |   22 | civil      |
+    '> +------+------+------+------------+
+    '> 1 row in set (0.00 sec)
+    '>
+    '> mysql> select * from pqr where id='7';
+    '> +------+--------+------+------------+
+    '> | id   | name   | age  | department |
+    '> +------+--------+------+------------+
+    '> |    7 | sherin |   24 | cse        |
+    '> +------+--------+------+------------+
+    '> 1 row in set (0.00 sec)
+    '>
+    '> mysql> select * from pqr where id>'5';
+    '> +------+---------+------+------------+
+    '> | id   | name    | age  | department |
+    '> +------+---------+------+------------+
+    '> |    6 | shahana |   24 | cse        |
+    '> |    7 | sherin  |   24 | cse        |
+    '> |    8 | vishnu  |   26 | cse        |
+    '> |    9 | rahul   |   28 | mca        |
+    '> |   10 | athul   |   19 | mca        |
+    '> +------+---------+------+------------+
+    '> 5 rows in set (0.00 sec)
+    '>
+    '> mysql> select * from pqr where id>='5';
+    '> +------+---------+------+------------+
+    '> | id   | name    | age  | department |
+    '> +------+---------+------+------------+
+    '> |    5 | anagha  |   24 | eee        |
+    '> |    6 | shahana |   24 | cse        |
+    '> |    7 | sherin  |   24 | cse        |
+    '> |    8 | vishnu  |   26 | cse        |
+    '> |    9 | rahul   |   28 | mca        |
+    '> |   10 | athul   |   19 | mca        |
+    '> +------+---------+------+------------+
+    '> 6 rows in set (0.00 sec)
+    '>
+    '> mysql> select * from pqr where id<='5';
+    '> +------+--------+------+------------+
+    '> | id   | name   | age  | department |
+    '> +------+--------+------+------------+
+    '> |    1 | akshay |   21 | mech       |
+    '> |    2 | akash  |   55 | history    |
+    '> |    3 | arun   |   22 | civil      |
+    '> |    4 | salah  |   20 | civil      |
+    '> |    5 | anagha |   24 | eee        |
+    '> +------+--------+------+------------+
+    '> 5 rows in set (0.00 sec)
+    '>
+    '> mysql> select * from pqr where id<'5';
+    '> +------+--------+------+------------+
+    '> | id   | name   | age  | department |
+    '> +------+--------+------+------------+
+    '> |    1 | akshay |   21 | mech       |
+    '> |    2 | akash  |   55 | history    |
+    '> |    3 | arun   |   22 | civil      |
+    '> |    4 | salah  |   20 | civil      |
+    '> +------+--------+------+------------+
+    '> 4 rows in set (0.00 sec)
+    '>
+    '> mysql> select * from pqr where '7'<id<'10';
+    '> +------+---------+------+------------+
+    '> | id   | name    | age  | department |
+    '> +------+---------+------+------------+
+    '> |    1 | akshay  |   21 | mech       |
+    '> |    2 | akash   |   55 | history    |
+    '> |    3 | arun    |   22 | civil      |
+    '> |    4 | salah   |   20 | civil      |
+    '> |    5 | anagha  |   24 | eee        |
+    '> |    6 | shahana |   24 | cse        |
+    '> |    7 | sherin  |   24 | cse        |
+    '> |    8 | vishnu  |   26 | cse        |
+    '> |    9 | rahul   |   28 | mca        |
+    '> |   10 | athul   |   19 | mca        |
+    '> +------+---------+------+------------+
+    '> 10 rows in set (0.00 sec)
+    '>
+    '> mysql> select * from pqr where id<'7';
+    '> +------+---------+------+------------+
+    '> | id   | name    | age  | department |
+    '> +------+---------+------+------------+
+    '> |    1 | akshay  |   21 | mech       |
+    '> |    2 | akash   |   55 | history    |
+    '> |    3 | arun    |   22 | civil      |
+    '> |    4 | salah   |   20 | civil      |
+    '> |    5 | anagha  |   24 | eee        |
+    '> |    6 | shahana |   24 | cse        |
+    '> +------+---------+------+------------+
+    '> 6 rows in set (0.00 sec)
+    '>
+    '> mysql> select * from pqr where id>'7';
+    '> +------+--------+------+------------+
+    '> | id   | name   | age  | department |
+    '> +------+--------+------+------------+
+    '> |    8 | vishnu |   26 | cse        |
+    '> |    9 | rahul  |   28 | mca        |
+    '> |   10 | athul  |   19 | mca        |
+    '> +------+--------+------+------------+
+    '> 3 rows in set (0.00 sec)
+    '>
+    '> mysql> select * from pqr where '10'<id>'7';
+    '> Empty set (0.00 sec)
+    '>
+    '> mysql>
+    '> mysql> select * from pqr where '10'<id>'7';
+    '> Empty set (0.00 sec)
+    '>
+    '> mysql> select * from pqr where id>'7'id<'10';
+    '> ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'id<'10'' at line 1
+    '> mysql> select * from pqr where id>'7' id<'10';
+    '> ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'id<'10'' at line 1
+    '> mysql> select * from pqr where id>'7' and id<'10';
+    '> +------+--------+------+------------+
+    '> | id   | name   | age  | department |
+    '> +------+--------+------+------------+
+    '> |    8 | vishnu |   26 | cse        |
+    '> |    9 | rahul  |   28 | mca        |
+    '> +------+--------+------+------------+
+    '> 2 rows in set (0.00 sec)
+    '>
+    '> mysql> select name from pqr where name lie'%';
+    '> ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'lie'%'' at line 1
+    '> mysql> select name from pqr where name lie'n%';
+    '> ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'lie'n%'' at line 1
+    '> mysql> select name from pqr where name like'n%';
+    '> Empty set (0.00 sec)
+    '>
+    '> mysql> select name from pqr where name like'a%';
+    '> +--------+
+    '> | name   |
+    '> +--------+
+    '> | akshay |
+    '> | akash  |
+    '> | arun   |
+    '> | anagha |
+    '> | athul  |
+    '> +--------+
+    '> 5 rows in set (0.00 sec)
+    '>
+    '> mysql> select name from pqr where name like'v%';
+    '> +--------+
+    '> | name   |
+    '> +--------+
+    '> | vishnu |
+    '> +--------+
+    '> 1 row in set (0.00 sec)
+    '>
+    '> mysql> select name from pqr where name like'_k%';
+    '> +--------+
+    '> | name   |
+    '> +--------+
+    '> | akshay |
+    '> | akash  |
+    '> +--------+
+    '> 2 rows in set (0.00 sec)
+    '>
+    '> mysql> select name from pqr where name like'%k%';
+    '> +--------+
+    '> | name   |
+    '> +--------+
+    '> | akshay |
+    '> | akash  |
+    '> +--------+
+    '> 2 rows in set (0.00 sec)
+    '>
+    '> mysql> select name from pqr where name like'%a%';
+    '> +---------+
+    '> | name    |
+    '> +---------+
+    '> | akshay  |
+    '> | akash   |
+    '> | arun    |
+    '> | salah   |
+    '> | anagha  |
+    '> | shahana |
+    '> | rahul   |
+    '> | athul   |
+    '> +---------+
+    '> 8 rows in set (0.00 sec)

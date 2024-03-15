@@ -1,0 +1,361 @@
+mysql: [Warning] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe: ignoring option '--no-beep' due to invalid value ''.
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.19 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| amal               |
+| exm                |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sample             |
+| sys                |
++--------------------+
+8 rows in set (0.07 sec)
+
+mysql> use database amal;
+ERROR 1049 (42000): Unknown database 'database'
+mysql> use amal;
+Database changed
+mysql> create table employe(ssn int,name varchar(20));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> select* from employe;
+Empty set (0.01 sec)
+
+mysql> create table employe(ssn varchar(20),name varchar(20),department varchar(20));
+ERROR 1050 (42S01): Table 'employe' already exists
+mysql> create table employee(ssn varchar(20),name varchar(20),department varchar(20));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select* from employee;
+Empty set (0.00 sec)
+
+mysql> insert into employee value('1',amal,mca);
+ERROR 1054 (42S22): Unknown column 'amal' in 'field list'
+mysql> insert into employee value('1','amal','mca');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select* from employee;
++------+------+------------+
+| ssn  | name | department |
++------+------+------------+
+| 1    | amal | mca        |
++------+------+------------+
+1 row in set (0.00 sec)
+
+mysql> insert into employee value('2','akash','mca');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee value('3','akshay','mca');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee value('4','athul','mca');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee value('5','rahul','eee');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select* from employee;
++------+--------+------------+
+| ssn  | name   | department |
++------+--------+------------+
+| 1    | amal   | mca        |
+| 2    | akash  | mca        |
+| 3    | akshay | mca        |
+| 4    | athul  | mca        |
+| 5    | rahul  | eee        |
++------+--------+------------+
+5 rows in set (0.00 sec)
+
+mysql> alter table employee add column place varchar(20);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select* from employee;
++------+--------+------------+-------+
+| ssn  | name   | department | place |
++------+--------+------------+-------+
+| 1    | amal   | mca        | NULL  |
+| 2    | akash  | mca        | NULL  |
+| 3    | akshay | mca        | NULL  |
+| 4    | athul  | mca        | NULL  |
+| 5    | rahul  | eee        | NULL  |
++------+--------+------------+-------+
+5 rows in set (0.00 sec)
+
+mysql> update employee set place='mavoor' where id='1';
+ERROR 1054 (42S22): Unknown column 'id' in 'where clause'
+mysql> update employee set place='mavoor' where ssn='1';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select* from employee;
++------+--------+------------+--------+
+| ssn  | name   | department | place  |
++------+--------+------------+--------+
+| 1    | amal   | mca        | mavoor |
+| 2    | akash  | mca        | NULL   |
+| 3    | akshay | mca        | NULL   |
+| 4    | athul  | mca        | NULL   |
+| 5    | rahul  | eee        | NULL   |
++------+--------+------------+--------+
+5 rows in set (0.00 sec)
+
+mysql> update employee set place='delhi' where id='1';
+ERROR 1054 (42S22): Unknown column 'id' in 'where clause'
+mysql> update employee set place='delhi' where ssn='1';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee set place='chennai' where ssn='2';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee set place='chennai' where ssn='3';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee set place='delhi' where ssn='4';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee set place='delhi' where ssn='5';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select* from employee;
++------+--------+------------+---------+
+| ssn  | name   | department | place   |
++------+--------+------------+---------+
+| 1    | amal   | mca        | delhi   |
+| 2    | akash  | mca        | chennai |
+| 3    | akshay | mca        | chennai |
+| 4    | athul  | mca        | delhi   |
+| 5    | rahul  | eee        | delhi   |
++------+--------+------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> update employee set department='HR' where ssn='1';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select* from employee;
++------+--------+------------+---------+
+| ssn  | name   | department | place   |
++------+--------+------------+---------+
+| 1    | amal   | HR         | delhi   |
+| 2    | akash  | mca        | chennai |
+| 3    | akshay | mca        | chennai |
+| 4    | athul  | mca        | delhi   |
+| 5    | rahul  | eee        | delhi   |
++------+--------+------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> update employee set department='FINANCE' where ssn='2';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee set department='FINANCE' where ssn='3';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee set department='ACCOUNTS' where ssn='4';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee set department='ACCOUNTS' where ssn='5';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select* from employee;
++------+--------+------------+---------+
+| ssn  | name   | department | place   |
++------+--------+------------+---------+
+| 1    | amal   | HR         | delhi   |
+| 2    | akash  | FINANCE    | chennai |
+| 3    | akshay | FINANCE    | chennai |
+| 4    | athul  | ACCOUNTS   | delhi   |
+| 5    | rahul  | ACCOUNTS   | delhi   |
++------+--------+------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> insert into employee value('6','ashitha','DEVELOPER','kochi');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select* from employee;
++------+---------+------------+---------+
+| ssn  | name    | department | place   |
++------+---------+------------+---------+
+| 1    | amal    | HR         | delhi   |
+| 2    | akash   | FINANCE    | chennai |
+| 3    | akshay  | FINANCE    | chennai |
+| 4    | athul   | ACCOUNTS   | delhi   |
+| 5    | rahul   | ACCOUNTS   | delhi   |
+| 6    | ashitha | DEVELOPER  | kochi   |
++------+---------+------------+---------+
+6 rows in set (0.00 sec)
+
+mysql> insert into employee value('7','shahana','DEVELOPER','banglore');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee value('8','anagha','HR','banglore');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee value('9','arjun','DEVELOPER','banglore');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee value('10','nawaf','ACCOUNTS','calicut');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select* from employee;
++------+---------+------------+----------+
+| ssn  | name    | department | place    |
++------+---------+------------+----------+
+| 1    | amal    | HR         | delhi    |
+| 2    | akash   | FINANCE    | chennai  |
+| 3    | akshay  | FINANCE    | chennai  |
+| 4    | athul   | ACCOUNTS   | delhi    |
+| 5    | rahul   | ACCOUNTS   | delhi    |
+| 6    | ashitha | DEVELOPER  | kochi    |
+| 7    | shahana | DEVELOPER  | banglore |
+| 8    | anagha  | HR         | banglore |
+| 9    | arjun   | DEVELOPER  | banglore |
+| 10   | nawaf   | ACCOUNTS   | calicut  |
++------+---------+------------+----------+
+10 rows in set (0.00 sec)
+
+mysql> alter table employee add column salary int;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select* from employee;
++------+---------+------------+----------+--------+
+| ssn  | name    | department | place    | salary |
++------+---------+------------+----------+--------+
+| 1    | amal    | HR         | delhi    |   NULL |
+| 2    | akash   | FINANCE    | chennai  |   NULL |
+| 3    | akshay  | FINANCE    | chennai  |   NULL |
+| 4    | athul   | ACCOUNTS   | delhi    |   NULL |
+| 5    | rahul   | ACCOUNTS   | delhi    |   NULL |
+| 6    | ashitha | DEVELOPER  | kochi    |   NULL |
+| 7    | shahana | DEVELOPER  | banglore |   NULL |
+| 8    | anagha  | HR         | banglore |   NULL |
+| 9    | arjun   | DEVELOPER  | banglore |   NULL |
+| 10   | nawaf   | ACCOUNTS   | calicut  |   NULL |
++------+---------+------------+----------+--------+
+10 rows in set (0.00 sec)
+
+mysql> update employee set salary='20000' where ssn='1';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select* from employee;
++------+---------+------------+----------+--------+
+| ssn  | name    | department | place    | salary |
++------+---------+------------+----------+--------+
+| 1    | amal    | HR         | delhi    |  20000 |
+| 2    | akash   | FINANCE    | chennai  |   NULL |
+| 3    | akshay  | FINANCE    | chennai  |   NULL |
+| 4    | athul   | ACCOUNTS   | delhi    |   NULL |
+| 5    | rahul   | ACCOUNTS   | delhi    |   NULL |
+| 6    | ashitha | DEVELOPER  | kochi    |   NULL |
+| 7    | shahana | DEVELOPER  | banglore |   NULL |
+| 8    | anagha  | HR         | banglore |   NULL |
+| 9    | arjun   | DEVELOPER  | banglore |   NULL |
+| 10   | nawaf   | ACCOUNTS   | calicut  |   NULL |
++------+---------+------------+----------+--------+
+10 rows in set (0.00 sec)
+
+mysql> update employee set salary='23000' where ssn='2';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee set salary='13500' where ssn='3';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee set salary='18500' where ssn='4';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee set salary='38500' where ssn='5';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee set salary='50000' where ssn='6';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee set salary='52000' where ssn='7';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee set salary='60000' where ssn='8';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee set salary='66000' where ssn='9';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee set salary='62000' where ssn='10';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select* from employee;
++------+---------+------------+----------+--------+
+| ssn  | name    | department | place    | salary |
++------+---------+------------+----------+--------+
+| 1    | amal    | HR         | delhi    |  20000 |
+| 2    | akash   | FINANCE    | chennai  |  23000 |
+| 3    | akshay  | FINANCE    | chennai  |  13500 |
+| 4    | athul   | ACCOUNTS   | delhi    |  18500 |
+| 5    | rahul   | ACCOUNTS   | delhi    |  38500 |
+| 6    | ashitha | DEVELOPER  | kochi    |  50000 |
+| 7    | shahana | DEVELOPER  | banglore |  52000 |
+| 8    | anagha  | HR         | banglore |  60000 |
+| 9    | arjun   | DEVELOPER  | banglore |  66000 |
+| 10   | nawaf   | ACCOUNTS   | calicut  |  62000 |
++------+---------+------------+----------+--------+
+10 rows in set (0.00 sec)
+
+mysql> select min(salary)from employee;
++-------------+
+| min(salary) |
++-------------+
+|       13500 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select max(salary)from employee;
++-------------+
+| max(salary) |
++-------------+
+|       66000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(salary)from employee;
++-------------+
+| avg(salary) |
++-------------+
+|  40350.0000 |
++-------------+
+1 row in set (0.00 sec)

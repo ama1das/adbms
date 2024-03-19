@@ -1,0 +1,229 @@
+
+mysql> show tables
+    -> show tables;
+ERROR 1046 (3D000): No database selected
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| amal               |
+| exm                |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sample             |
+| sys                |
++--------------------+
+8 rows in set (0.01 sec)
+
+mysql> use amal;
+Database changed
+mysql> select * from amal;
+ERROR 1146 (42S02): Table 'amal.amal' doesn't exist
+mysql> select * from employee;
++------+---------+------------+----------+--------+
+| ssn  | name    | department | place    | salary |
++------+---------+------------+----------+--------+
+| 1    | amal    | HR         | delhi    |  20000 |
+| 2    | akash   | FINANCE    | chennai  |  23000 |
+| 3    | akshay  | FINANCE    | chennai  |  13500 |
+| 4    | athul   | ACCOUNTS   | delhi    |  18500 |
+| 5    | rahul   | ACCOUNTS   | delhi    |  38500 |
+| 6    | ashitha | DEVELOPER  | kochi    |  50000 |
+| 7    | shahana | DEVELOPER  | banglore |  52000 |
+| 8    | anagha  | HR         | banglore |  60000 |
+| 9    | arjun   | DEVELOPER  | banglore |  66000 |
+| 10   | nawaf   | ACCOUNTS   | calicut  |  62000 |
++------+---------+------------+----------+--------+
+10 rows in set (0.01 sec)
+
+mysql> update employee set salary='20000.00' where ssn='1';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> select * from employee;
++------+---------+------------+----------+--------+
+| ssn  | name    | department | place    | salary |
++------+---------+------------+----------+--------+
+| 1    | amal    | HR         | delhi    |  20000 |
+| 2    | akash   | FINANCE    | chennai  |  23000 |
+| 3    | akshay  | FINANCE    | chennai  |  13500 |
+| 4    | athul   | ACCOUNTS   | delhi    |  18500 |
+| 5    | rahul   | ACCOUNTS   | delhi    |  38500 |
+| 6    | ashitha | DEVELOPER  | kochi    |  50000 |
+| 7    | shahana | DEVELOPER  | banglore |  52000 |
+| 8    | anagha  | HR         | banglore |  60000 |
+| 9    | arjun   | DEVELOPER  | banglore |  66000 |
+| 10   | nawaf   | ACCOUNTS   | calicut  |  62000 |
++------+---------+------------+----------+--------+
+10 rows in set (0.00 sec)
+
+mysql> update employee set salary='20000.00' where ssn='1';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> alter table employee delete column salary ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delete column salary' at line 1
+mysql> update table employee delete column salary ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table employee delete column salary' at line 1
+mysql> 1 ALTER TABLE employee 2 DROP salary;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1 ALTER TABLE employee 2 DROP salary' at line 1
+mysql> select salary from employee where salary between 10000 and 40000;
++--------+
+| salary |
++--------+
+|  20000 |
+|  23000 |
+|  13500 |
+|  18500 |
+|  38500 |
++--------+
+5 rows in set (0.00 sec)
+
+mysql> select department from employee where department in(HR, PRODUCTION ,FINANCE);
+ERROR 1054 (42S22): Unknown column 'HR' in 'where clause'
+mysql> select department from employee where department in('HR', PRODUCTION ,FINANCE);
+ERROR 1054 (42S22): Unknown column 'PRODUCTION' in 'where clause'
+mysql> select department from employee where department in('HR', 'PRODUCTION' ,'FINANCE');
++------------+
+| department |
++------------+
+| HR         |
+| FINANCE    |
+| FINANCE    |
+| HR         |
++------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employee where department in('HR', 'PRODUCTION' ,'FINANCE');
++------+--------+------------+----------+--------+
+| ssn  | name   | department | place    | salary |
++------+--------+------------+----------+--------+
+| 1    | amal   | HR         | delhi    |  20000 |
+| 2    | akash  | FINANCE    | chennai  |  23000 |
+| 3    | akshay | FINANCE    | chennai  |  13500 |
+| 8    | anagha | HR         | banglore |  60000 |
++------+--------+------------+----------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employee where department not in('HR', 'PRODUCTION' ,'FINANCE');
++------+---------+------------+----------+--------+
+| ssn  | name    | department | place    | salary |
++------+---------+------------+----------+--------+
+| 4    | athul   | ACCOUNTS   | delhi    |  18500 |
+| 5    | rahul   | ACCOUNTS   | delhi    |  38500 |
+| 6    | ashitha | DEVELOPER  | kochi    |  50000 |
+| 7    | shahana | DEVELOPER  | banglore |  52000 |
+| 9    | arjun   | DEVELOPER  | banglore |  66000 |
+| 10   | nawaf   | ACCOUNTS   | calicut  |  62000 |
++------+---------+------------+----------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select * from employee where department='HR' group by department order by department;
++------+------+------------+-------+--------+
+| ssn  | name | department | place | salary |
++------+------+------------+-------+--------+
+| 1    | amal | HR         | delhi |  20000 |
++------+------+------------+-------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee where department='HR','ACCOUNTS' group by department order by department;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ','ACCOUNTS' group by department order by department' at line 1
+mysql> select * from employee where department='HR' or 'ACCOUNTS' group by department order by department;
++------+------+------------+-------+--------+
+| ssn  | name | department | place | salary |
++------+------+------------+-------+--------+
+| 1    | amal | HR         | delhi |  20000 |
++------+------+------------+-------+--------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select count(department) from employee group by department;
++-------------------+
+| count(department) |
++-------------------+
+|                 2 |
+|                 2 |
+|                 3 |
+|                 3 |
++-------------------+
+4 rows in set (0.00 sec)
+
+mysql> select count(department) from employee group by department order by department;
++-------------------+
+| count(department) |
++-------------------+
+|                 3 |
+|                 3 |
+|                 2 |
+|                 2 |
++-------------------+
+4 rows in set (0.00 sec)
+
+mysql> select count(ssn),department from employee group by department order by department;
++------------+------------+
+| count(ssn) | department |
++------------+------------+
+|          3 | ACCOUNTS   |
+|          3 | DEVELOPER  |
+|          2 | FINANCE    |
+|          2 | HR         |
++------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> alter table employee add primary key (ssn);
+Query OK, 0 rows affected (0.31 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table employee add primarykey (ssn);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(ssn)' at line 1
+mysql> alter table employee add primary key (ssn);
+ERROR 1068 (42000): Multiple primary key defined
+mysql> select * from employee;
++-----+---------+------------+----------+--------+
+| ssn | name    | department | place    | salary |
++-----+---------+------------+----------+--------+
+| 1   | amal    | HR         | delhi    |  20000 |
+| 10  | nawaf   | ACCOUNTS   | calicut  |  62000 |
+| 2   | akash   | FINANCE    | chennai  |  23000 |
+| 3   | akshay  | FINANCE    | chennai  |  13500 |
+| 4   | athul   | ACCOUNTS   | delhi    |  18500 |
+| 5   | rahul   | ACCOUNTS   | delhi    |  38500 |
+| 6   | ashitha | DEVELOPER  | kochi    |  50000 |
+| 7   | shahana | DEVELOPER  | banglore |  52000 |
+| 8   | anagha  | HR         | banglore |  60000 |
+| 9   | arjun   | DEVELOPER  | banglore |  66000 |
++-----+---------+------------+----------+--------+
+10 rows in set (0.00 sec)
+
+mysql> alter table employee add primary key (ssn);
+ERROR 1068 (42000): Multiple primary key defined
+mysql> alter table employee drop primary key (ssn);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(ssn)' at line 1
+mysql> tesc employee;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tesc employee' at line 1
+mysql> desc employee;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| ssn        | varchar(20) | NO   | PRI | NULL    |       |
+| name       | varchar(20) | YES  |     | NULL    |       |
+| department | varchar(20) | YES  |     | NULL    |       |
+| place      | varchar(20) | YES  |     | NULL    |       |
+| salary     | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> alter table employee drop primary key (ssn);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(ssn)' at line 1
+mysql> desc employee;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| ssn        | varchar(20) | NO   | PRI | NULL    |       |
+| name       | varchar(20) | YES  |     | NULL    |       |
+| department | varchar(20) | YES  |     | NULL    |       |
+| place      | varchar(20) | YES  |     | NULL    |       |
+| salary     | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
